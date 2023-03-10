@@ -8,7 +8,7 @@ Sample configuration files [available](https://github.com/santisbon/reference/tr
 # Do a clean install of the OS
 
 On macOS download the new version from System Preferences, Software Update (or the Mac App Store) and create the bootable media with:
-```shell
+```Shell
 sudo /Applications/Install\ macOS\ Ventura.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume/
 ```
 using the volume that matches the name of the external drive you are using.  
@@ -24,7 +24,7 @@ If you have an Apple silicon Mac here's how to install macOS from a bootable ins
 3. Press the power button to turn on the Mac - but keep it pressed until you see the startup options window including your bootable volume.  
 
 Open Finder and show hidden files with Command + Shift + . (period) or with
-```shell
+```Shell
 defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder
 ```
 
@@ -32,7 +32,7 @@ defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder
 # Package manager 
 ## macOS
 Get [Homebrew](https://brew.sh/), a package manager for macOS.
-```shell
+```Shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew doctor
 ```
@@ -45,7 +45,7 @@ Depending on your distribution, you may have apt (Ubuntu), yum (Red Hat), or zyp
 # Shell
 ## Bash
 If you want to use bash
-```shell
+```Shell
 brew install bash # get the latest version of bash
 chsh -s $(which bash)
 nano ~/.bash_profile # and paste from sample dot file
@@ -69,44 +69,44 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 [Oh My Zsh](https://ohmyz.sh/)  
 Add any built-in [plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins) you need to your ```~/.zshrc```
-```shell
+```Shell
 plugins=(git macos python)
 ```
 
 You can also add custom plugins by cloning the repo into the plugins directory or with Homebrew. 
 
 This plugin auto suggests previous commands. 
-```shell
+```Shell
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 # add zsh-autosuggestions to plugins list in ~/.zshrc and:
 source ~/.zshrc
 ```
 
 This plugin [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) highlights valid commands green and invalid ones red so you don't have to test the command to see if it will work.
-```shell
+```Shell
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 Or just use Homebrew:
-```shell
+```Shell
 brew install zsh-syntax-highlighting
 # To activate the syntax highlighting, add the following at the end of your ~/.zshrc:
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
 
 Some Oh My Zsh themes like [Spaceship](https://spaceship-prompt.sh/) have requirements like the Powerline Fonts. Get them with:
-```shell
+```Shell
 git clone https://github.com/powerline/fonts.git --depth=1
 ./fonts/install.sh
 rm -rf fonts
 ```
 
 You can also install fonts with Homebrew by adding the fonts repository. [Fira Code](https://github.com/tonsky/FiraCode/wiki/VS-Code-Instructions) is a good one for programming and computer science.
-```shell
+```Shell
 brew tap homebrew/cask-fonts
 brew install --cask font-fira-code
 ```
 Install your Oh My Zsh theme e.g. Spaceship
-```shell
+```Shell
 brew install spaceship
 # If the theme is not copied to your themes folder, sim link from the Homebrew dir to your custom themes folder e.g.
 ln -sf $(brew --prefix)/Cellar/spaceship/4.4.1/spaceship.zsh $ZSH_CUSTOM/themes/spaceship.zsh-theme
@@ -115,21 +115,21 @@ touch ~/.spaceshiprc.zsh
 ```
 
 Any time you edit your zsh configuration file you can reload it to apply changes.
-```shell
+```Shell
 source ~/.zshrc
 ```
 
 ## Terminal replacement
 You can use [iTerm2](https://iterm2.com/index.html)
-```shell
+```Shell
 brew install --cask iterm2
 ```
 
 After you have installed the font(s) required by your Oh My Zsh theme set your iTerm preferences like default shell and font.  
-Verify that you're using the shell you want. In the output of the ```env``` command look for something like ```SHELL=/opt/homebrew/bin/zsh```.
+Verify that you're using the shell you want. In the output of the ```env``` command look for something like ```Shell=/opt/homebrew/bin/zsh```.
 
 Install iTerm 2 color schemes
-```shell
+```Shell
 git clone https://github.com/mbadolato/iTerm2-Color-Schemes.git
 cd iTerm2-Color-Schemes
 
@@ -143,7 +143,7 @@ iTerm2 > Preferences > Profile > Colors > Color Presets
 # Install utilities
 These will vary for each person. Some examples on a Mac:  
 
-```shell
+```Shell
 brew install wget
 brew install gcc
 brew install jq
@@ -175,7 +175,7 @@ brew install logitech-options # driver for Logitech mouse
 ```
 
 On macOS you can also install gcc by installing the xcode developer tools if you're not using Homebrew.
-```shell
+```Shell
 xcode-select -v # check if tools are installed
 xcode-select --install
 ```
@@ -198,7 +198,7 @@ Useful extensions:
 ## Install
 
 macOS  
-```shell
+```Shell
 brew install git
 git --version
 
@@ -210,13 +210,13 @@ gh config set editor "codium -w" # or code, nano, etc
 GitHub CLI [reference](https://docs.github.com/en/github-cli/github-cli/github-cli-reference).
 
 Linux
-```shell
+```Shell
 sudo yum install git # or git-all
 git --version
 ```
 
 ## Configure
-```shell
+```Shell
 git config --global core.editor 'codium --wait'
 
 git config --global diff.tool codium
@@ -232,7 +232,7 @@ codium ~/.gitconfig # and paste from sample dot file. Also: codium, vscode, nano
 Then you can ```git difftool main feature-branch```.  
 
 If using AWS CodeCommit do this after configuring the AWS CLI:
-```shell
+```Shell
 git config --global credential.helper '!aws codecommit credential-helper $@'
 git config --global credential.UseHttpPath true
 ```
@@ -240,7 +240,7 @@ Troubleshooting CodeCommit
 https://docs.aws.amazon.com/codecommit/latest/userguide/troubleshooting-ch.html#troubleshooting-macoshttps
 
 To create a squash function:
-```shell
+```Shell
 git config --global alias.squash-all '!f(){ git reset $(git commit-tree "HEAD^{tree}" "$@");};f'
 ```
 :::info
@@ -253,7 +253,7 @@ git config --global alias.squash-all '!f(){ git reset $(git commit-tree "HEAD^{t
 - If you’re using ZSH, the `^` character is used for globbing, so you have to enclose the whole expression in quotes: `"HEAD^{tree}"`
 :::
 Then just run:
-```shell
+```Shell
 git squash-all -m "a brand new start"
 git push -f
 ```
@@ -272,26 +272,26 @@ mv ~/git-completion.bash ~/.git-completion.bash
 3. [Add](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/) the public key to your GitHub account.
 
 If the terminal is no longer authenticating you:
-```shell
+```Shell
 git remote -v # is it https or ssh? Should be ssh
 git remote remove origin
 git remote add origin git@github.com:user/repo.git
 ```
 Still having issues? Start the ssh-agent in the background and add your SSH private key to the ssh-agent.
-```shell
+```Shell
 ps -ax | grep ssh-agent
 eval "$(ssh-agent -s)"
 ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 ```
 If you need to add your public key to Github again copy and paste it on your Settings page on Github:
-```shell
+```Shell
 pbcopy < ~/.ssh/id_ed25519.pub
 ```
 
 # Docker
 ## Install
 ### macOS
-```shell
+```Shell
 brew install --cask docker
 ```
 * You must use the --cask version. Otherwise only the client is included and can't run the Docker daemon. Then open the Docker app and grant privileged access when asked. Only then will you be able to use docker.
@@ -301,7 +301,7 @@ If you just ran `apt upgrade` on your Raspberry Pi, reboot before installing Doc
 Follow the appropriate [installation method](https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script).  
 
 If you don't want to have to prefix commands with sudo add your user to the `docker` group. This is equivalent to giving that user root privileges.
-```shell
+```Shell
 cat /etc/group | grep docker # see if docker group exists
 sudo usermod -aG docker $USER
 ```
@@ -334,7 +334,7 @@ When installing apps on the container either install the package for the ARM pla
 See Docker host info.  
 You need to use the real field names (not display names) so we'll grab the info in json to get the real field names and use ```jq``` to display it nicely. Then we'll render them using Go templates.
 
-```shell
+```Shell
 docker info --format '{{json .}}' | jq .
 
 docker info --format "{{.Plugins.Volume}}"
@@ -345,7 +345,7 @@ With the default images, Docker Desktop for Apple silicon warns us the requested
 ```--platform linux/amd64``` is the default and the same as  ```--platform linux/x86_64```. It runs (or builds) an Intel image.  
 ```--platform linux/arm64``` runs (or builds) an aarch64 (arm64) image. Architecture used by Appple M1/M2.  
 
-```shell
+```Shell
 docker run -it --name container1 debian # WARNING. uname -m -> x86_64 (amd64)
 docker run -it --platform linux/amd64 --name container1 debian # NO warning. uname -m -> x86_64 (amd64). On Mac it emulates Intel.
 docker run -it --platform linux/arm64 --name container1 debian # NO warning. uname -m -> aarch64 (arm64). Mac native.
@@ -357,12 +357,12 @@ docker run -it --name mycontainer arm64v8/debian bash # NO warning. uname -m -> 
 ### Examples
 
 Dockerfile instruction to keep a container running
-```shell
+```Shell
 CMD tail -f /dev/null
 ```
 
 Running containers
-```shell
+```Shell
 # sanity check
 docker version
 docker --help
@@ -388,7 +388,7 @@ docker ps -aq -f status=exited
 ```
 
 Working with images and volumes
-```shell
+```Shell
 
 # Show all images (including intermediate images)
 docker image ls -a
@@ -431,7 +431,7 @@ docker run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i sh
 ```
 
 If you want to build [multi-platform](https://docs.docker.com/build/building/multi-platform/#getting-started) docker images:
-```shell
+```Shell
 docker buildx create --name mybuilder --driver docker-container --bootstrap
 docker buildx use mybuilder
 
@@ -442,7 +442,7 @@ docker buildx ls
 Docker Compose. Multi-container deployments in a compose.yaml file.  
 [Using Compose in Production](https://docs.docker.com/compose/production/)  
 
-```shell
+```Shell
 docker compose -p mastodon-bot-project up --detach
 # or
 docker compose -p mastodon-bot-project create
@@ -458,7 +458,7 @@ docker compose -p mastodon-bot-project stop
 
 Kubernetes
 
-```shell
+```Shell
 # Convert the Docker Compose file to k8s files
 kompose --file compose.yaml convert
 
@@ -506,26 +506,26 @@ Example with 1 control plane node and 2 worker nodes.
 
 If you wish, you can set an appropriate hostname for each node.  
 **On the control plane node**:  
-```shell
+```Shell
 sudo hostnamectl set-hostname k8s-control
 ```
 
 **On the first worker node**:  
-```shell
+```Shell
 sudo hostnamectl set-hostname k8s-worker1
 ```
 **On the second worker node**:  
-```shell
+```Shell
 sudo hostnamectl set-hostname k8s-worker2
 ```
 
 **On all nodes**, set up the hosts file to enable all the nodes to reach each other using these hostnames.
-```shell
+```Shell
 sudo nano /etc/hosts
 ```
 
 **On all nodes**, add the following at the end of the file. You will need to supply the actual private IP address for each node.
-```shell
+```Shell
 <control plane node private IP> k8s-control
 <worker node 1 private IP> k8s-worker1
 <worker node 2 private IP> k8s-worker2
@@ -535,7 +535,7 @@ Log out of all three servers and log back in to see these changes take effect.
 
 **On all nodes, set up containerd**. You will need to load some kernel modules and modify some system settings as part of this
 process.  
-```shell
+```Shell
 # Enable them when the server start up
 cat << EOF | sudo tee /etc/modules-load.d/containerd.conf
 overlay
@@ -558,7 +558,7 @@ sudo sysctl --system
 ```
 
 Install and configure containerd.  
-```shell
+```Shell
 sudo apt-get update && sudo apt-get install -y containerd
 sudo mkdir -p /etc/containerd
 # Generate the contents of a default config file and save it
@@ -568,11 +568,11 @@ sudo systemctl restart containerd
 ```
 
 **On all nodes, disable swap**.
-```shell
+```Shell
 sudo swapoff -a
 ```
 **On all nodes, install kubeadm, kubelet, and kubectl**.
-```shell
+```Shell
 # Some required packages
 sudo apt-get update && sudo apt-get install -y apt-transport-https curl
 # Set up the package repo for k8s packages. Download the key for the repo and add it
@@ -589,7 +589,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
 **On the control plane node only**, initialize the cluster and set up kubectl access.
-```shell
+```Shell
 sudo kubeadm init --pod-network-cidr 192.168.0.0/16 --kubernetes-version 1.24.0
 # Config File to authenticate and interact with the cluster with kubectl commands
 # These are in the output of the previous step
@@ -599,28 +599,28 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 Verify the cluster is working. It will be in Not Ready status because we haven't configured the networking plugin.
-```shell
+```Shell
 kubectl get nodes
 ```
 
 Install the Calico network add-on.
-```shell
+```Shell
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 ```
 
 Get the join command (this command is also printed during kubeadm init . Feel free to simply copy it from there).
-```shell
+```Shell
 kubeadm token create --print-join-command
 ```
 
 Copy the join command from the control plane node. Run it **on each worker node** as root (i.e. with sudo ).
-```shell
+```Shell
 sudo kubeadm join ...
 ```
 
 **On the control plane node**, verify all nodes in your cluster are ready. Note that it may take a few moments for all of the nodes to
 enter the READY state.
-```shell
+```Shell
 kubectl get nodes
 ```
 
@@ -635,40 +635,40 @@ to avoid storing your Docker Hub password unencrypted in `$HOME/.docker/config.j
 For simplicity we'll use the control plane server just so we don't have to create another server for this exercise.  
 
 Create a docker group. Users in this group will have permission to use Docker on the system:
-```shell
+```Shell
 sudo groupadd docker
 ```
 
 Install required packages.  
 Note: Some of these packages may already be present on the system, but including them here will not cause any problems:
-```shell
+```Shell
 sudo apt-get update && sudo apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release
 ```
 
 Set up the Docker GPG key and package repository:
-```shell
+```Shell
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
 Install the Docker Engine:
-```shell
+```Shell
 sudo apt-get update && sudo apt-get install -y docker-ce docker-ce-cli
 # Type N (default) or enter to keep your current containerd configuration
 ```
 
 Test the Docker setup:
-```shell
+```Shell
 sudo docker version
 ```
 
 Add cloud_user to the docker group in order to give cloud_user access to use Docker:
-```shell
+```Shell
 sudo usermod -aG docker cloud_user
 ```
 Log out of the server and log back in.  
 Test your setup:
-```shell
+```Shell
 docker version
 ```
 
@@ -683,18 +683,18 @@ Store config in the environment
 [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)  
 
 Create a production Namespace:
-```shell
+```Shell
 kubectl create namespace production
 ```
 
 Get base64-encoded strings for a db username and password:
-```shell
+```Shell
 echo -n my_user | base64
 echo -n my_password | base64
 ```
 
 Example: Create a ConfigMap and Secret to configure the backing service connection information for the app, including the base64-encoded credentials:
-```shell
+```Shell
 cat > my-app-config.yml <<End-of-message 
 apiVersion: v1
 kind: ConfigMap
@@ -718,13 +718,13 @@ data:
 End-of-message
 ```
 
-```shell
+```Shell
 kubectl apply -f my-app-config.yml -n production
 ```
 
 Create a temporary Pod to test the configuration setup. Note that you need to supply your Docker Hub username as part of the image name in this file.
 This passes configuration data in env variables but you could also do it in files that will show up on the containers filesystem.
-```shell
+```Shell
 cat > test-pod.yml <<End-of-message
 
 apiVersion: v1
@@ -764,17 +764,17 @@ spec:
 End-of-message
 ```
 
-```shell
+```Shell
 kubectl apply -f test-pod.yml -n production
 ```
 
 Check the logs to verify the config data is being passed to the container:
-```shell
+```Shell
 kubectl logs test-pod -n production
 ```
 
 Clean up the test pod:
-```shell
+```Shell
 kubectl delete pod test-pod -n production --force
 ```
 
@@ -791,7 +791,7 @@ The `selector` selects pods that have the specified label name and value.
 `template` is the pod template.  
 This example puts 2 containers in the same pod for simplicity but in the real world you'll want separate deployments to scale them independently.
 
-```shell
+```Shell
 cat > my-app.yml <<End-of-message
 apiVersion: v1
 kind: ConfigMap
@@ -902,23 +902,23 @@ End-of-message
 ```
 
 Deploy the app.
-```shell
+```Shell
 kubectl apply -f my-app.yml -n production
 ```
 
 Create a new container image version to test the rollout process:
-```shell
+```Shell
 docker tag <Your Docker Hub username>/my-app-frontend:0.0.1 <Your Docker Hub username>/my-app-frontend:0.0.2
 docker push <Your Docker Hub username>/my-app-frontend:0.0.2
 ```
 
 Edit the app manifest `my-app.yml` to use the `0.0.2` image version and then:
-```shell
+```Shell
 kubectl apply -f my-app.yml -n production
 ```
 
 Get the list of Pods to see the new version rollout:
-```shell
+```Shell
 kubectl get pods -n production
 ```
 
@@ -962,7 +962,7 @@ containers:
 ```
 
 Deploy the changes:
-```shell
+```Shell
 kubectl apply -f my-app.yml -n production
 ```
 
@@ -980,7 +980,7 @@ metadata:
 provisioner: kubernetes.io/no-provisioner
 allowVolumeExpansion: true
 ```
-```shell
+```Shell
 kubectl create -f localdisk-sc.yml
 ```
 
@@ -1011,12 +1011,12 @@ spec:
   hostPath:
     path: /var/output
 ```
-```shell
+```Shell
 kubectl create -f my-pv.yml
 ```
 
 Check the status of the PersistentVolume.
-```shell
+```Shell
 kubectl get pv
 ```
 
@@ -1034,12 +1034,12 @@ spec:
     requests:
       storage: 100Mi
 ```
-```shell
+```Shell
 kubectl create -f my-pvc.yml
 ```
 
 Check the status of the PersistentVolume and PersistentVolumeClaim to verify that they have been bound.
-```shell
+```Shell
 kubectl get pv
 kubectl get pvc
 ```
@@ -1064,12 +1064,12 @@ spec:
     persistentVolumeClaim:
       claimName: my-pvc
 ```
-```shell
+```Shell
 kubectl create -f pv-pod.yml
 ```
 
 Expand the PersistentVolumeClaim and record the process.
-```shell
+```Shell
 kubectl edit pvc my-pvc --record
 ```
 ```yaml
@@ -1082,13 +1082,13 @@ spec:
 ```
 
 Delete the Pod and the PersistentVolumeClaim.
-```shell
+```Shell
 kubectl delete pod pv-pod
 kubectl delete pvc my-pvc
 ```
 
 Check the status of the PersistentVolume to verify that it has been successfully recycled and is available again.
-```shell
+```Shell
 kubectl get pv
 ```
 
@@ -1107,13 +1107,13 @@ Tht means ports only need to be unique within each pod.
 The pods can communicate across nodes simply using the unique IPs.
 
 Get a list of Pods in the production namespace:
-```shell
+```Shell
 kubectl get pods -n production -o wide
 ```
 
 Copy the name of the IP address of the application Pod.  
 Example: Use the IP address to make a request to the port on the Pod that serves the frontend content:
-```shell
+```Shell
 curl <Pod Cluster IP address>:5000
 ```
 
@@ -1135,12 +1135,12 @@ replicas: 3
 ```
 
 Apply the changes:
-```shell
+```Shell
 kubectl apply -f my-app.yml -n production
 ```
 
 Get a list of Pods:
-```shell
+```Shell
 kubectl get pods -n production
 ```
 
@@ -1152,12 +1152,12 @@ replicas: 5
 ```
 
 Apply the changes:
-```shell
+```Shell
 kubectl apply -f my-app .yml -n production
 ```
 
 Get a list of Pods:
-```shell
+```Shell
 kubectl get pods -n production
 ```
 
@@ -1172,18 +1172,18 @@ Maximize robustness with fast startup and graceful shutdown
 Deployments can be used to maintain a specified number of running replicas automatically replacing pods that fail or are deleted.
 
 Get a list of Pods:
-```shell
+```Shell
 kubectl get pods -n production
 ```
 
 Locate one of the Pods from the my-app deployment and copy the Pod's name.  
 Delete the Pod using the Pod name:
-```shell
+```Shell
 kubectl delete pod <Pod name> -n production
 ```
 
 Get the list of Pods again. You will notice that the deployment is automatically creating a new Pod to replace the one that was deleted:
-```shell
+```Shell
 kubectl get pods -n production
 ```
 
@@ -1197,12 +1197,12 @@ Keep development, staging, and production as similar as possible
 k8s namespaces allow us to have multiple environments in the same cluster. A namespace is like a virtual cluster.
 
 Create a new namespace:
-```shell
+```Shell
 kubectl create namespace dev
 ```
 
 Make a copy of the my-app app YAML:
-```shell
+```Shell
 cp my-app.yml my-app-dev.yml
 ```
 
@@ -1245,17 +1245,17 @@ data:
 ```
 
 Deploy the backing service setup in the new namespace:
-```shell
+```Shell
 kubectl apply -f k8s-my-app-mongodb.yml -n dev
 kubectl apply -f my-app-mongodb.yml -n dev
 ```
 
 Deploy the app in the new namespace:
-```shell
+```Shell
 kubectl apply -f my-app-dev.yml -n dev
 ```
 Check the status of the Pods:
-```shell
+```Shell
 kubectl get pods -n dev
 ```
 
@@ -1280,12 +1280,12 @@ console.log(data);
 ```
 
 Build a new server image because we changed the source code:
-```shell
+```Shell
 docker build -t <Your Docker Hub username>/my-app-server:0.0.4 --target server .
 ```
 
 Push the image:
-```shell
+```Shell
 docker push <Your Docker Hub username>/my-app-server:0.0.4
 ```
 
@@ -1296,17 +1296,17 @@ containers:
   image: <Your Docker Hub username>/my-app-server:0.0.4
 ```
 
-```shell
+```Shell
 kubectl apply -f my-app.yml -n production
 ```
 
 Get a list of Pods:
-```shell
+```Shell
 kubectl get pods -n production
 ```
 
 Copy the name of one of the my-app deployment Pods and view its logs specifying the pod, namespace, and container.
-```shell
+```Shell
 kubectl logs <Pod name> -n production -c my-app-server
 ```
 
@@ -1349,7 +1349,7 @@ COPY --from=build /usr/src/app/src/jobs .
 ```
 
 Build and push the server image:
-```shell
+```Shell
 docker build -t <Your Docker Hub username>/my-app-server:0.0.5 --target server .
 docker push <Your Docker Hub username>/my-app-server:0.0.5
 ```
@@ -1395,21 +1395,21 @@ spec:
 ```
 
 Run the Job:
-```shell
+```Shell
 kubectl apply -f de-duplicate-job.yml -n production
 ```
 
 Check the Job status:
-```shell
+```Shell
 kubectl get jobs -n production
 ```
 Get the name of the Job Pod:
-```shell
+```Shell
 kubectl get pods -n production
 ```
 
 Use the Pod name to view the logs for the Job Pod:
-```shell
+```Shell
 kubectl logs <Pod name> -n production
 ```
 
@@ -1422,7 +1422,7 @@ cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1
 ```
 
 For Raspberry Pi OS [install](https://snapcraft.io/docs/installing-snap-on-raspbian) `snap` first.
-```shell
+```Shell
 sudo apt update
 sudo apt install snapd
 sudo reboot
@@ -1430,7 +1430,7 @@ sudo reboot
 sudo snap install core
 ```
 Then install MicroK8s.
-```shell
+```Shell
 pi@raspberrypi4:~ $ sudo snap install microk8s --classic
 pi@raspberrypi4:~ $ microk8s status --wait-ready
 pi@raspberrypi4:~ $ microk8s kubectl get all --all-namespaces
@@ -1442,39 +1442,40 @@ pi@raspberrypi4:~ $ watch microk8s kubectl get all
 pi@raspberrypi4:~ $ microk8s reset
 pi@raspberrypi4:~ $ microk8s status
 pi@raspberrypi4:~ $ microk8s stop # microk8s start
+pi@raspberrypi4:~ $ microk8s kubectl version --output=yaml
 ```
 
 You can update a snap package with `sudo snap refresh`.
 
 Configuration file. These are the arguments you can add regarding log rotation `--container-log-max-files` and `--container-log-max-size`. They have default values. [More info](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/).
-```shell
+```Shell
 cat /var/snap/microk8s/current/args/kubelet
 ```
 
 ### Registry
 [Registry doc](https://microk8s.io/docs/registry-built-in)
-```shell
+```Shell
 microk8s enable registry
 ```
 The containerd daemon used by MicroK8s is configured to trust this insecure registry. To upload images we have to tag them with `localhost:32000/your-image` before pushing them.
 
 ### MicroK8s dashboard
 If RBAC is not enabled access the dashboard using the token retrieved with:
-```shell
+```Shell
 microk8s kubectl describe secret -n kube-system microk8s-dashboard-token
 ```
 Use this token in the https login UI of the `kubernetes-dashboard` service.
 In an RBAC enabled setup (`microk8s enable rbac`) you need to create a user with restricted permissions as shown [here](https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md).
 
 To access remotely from anywhere:
-```shell
+```Shell
 microk8s kubectl port-forward -n kube-system service/kubernetes-dashboard 10443:443 --address 0.0.0.0
 ```
 You can then access the Dashboard with IP or hostname as in https://raspberrypi4.local:10443/
 
 
 ### Troubleshooting
-```shell
+```Shell
 microk8s inspect
 ```
 MicroK8s might not recognize that cgroup memory is enabled but you can check with `cat /proc/cgroups`.
@@ -1483,10 +1484,10 @@ MicroK8s might not recognize that cgroup memory is enabled but you can check wit
 ## Kubernetes Dashboard
 
 [Documentation](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
-```shell
+```Shell
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
 ```
-```shell
+```Shell
 cat << EOF > dashboard-adminuser.yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -1511,7 +1512,7 @@ subjects:
 EOF
 ```
 
-```shell
+```Shell
 kubectl apply -f dashboard-adminuser.yaml
 
 kubectl proxy
@@ -1530,88 +1531,88 @@ kubectl -n kubernetes-dashboard create token admin-user
 ### With Homebrew
 Even if you already have Python on your OS it might be an outdated version. This installs python and pip.  
 macOS
-```shell
+```Shell
 brew install python
 python3 --version
 ```
 The python formulae install pip (as pip3) and Setuptools. Setuptools can be updated via pip3 and pip3 can be used to upgrade itself.
-```shell
+```Shell
 python3 -m pip install --upgrade setuptools
 python3 -m pip install --upgrade pip
 ```
 Add the unversioned symlinks to your ```$PATH``` by adding this to your ```.zshrc``` file.
-```shell
+```Shell
 export PATH="$(brew --prefix)/opt/python/libexec/bin:$PATH"
 ```
 See the [Homebrew Python](https://docs.brew.sh/Homebrew-and-Python) documentation for details.  
 
 `site-packages` is here. Example for python 3.10 on Homebrew
-```shell
+```Shell
 ls -al $(brew --prefix)/lib/python3.10/site-packages
 ```
 
 ### Without Homebrew
 Linux (Ubuntu)
-```shell
+```Shell
 sudo apt install python3
 ```
 
 macOS  
 Download .pkg installer from pythong.org. Then get pip.
-```shell
+```Shell
 curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py
 sudo python get-pip.py
 ```
 
 Linux
-```shell
+```Shell
 sudo apt install python-pip
 ```
 
-```shell
+```Shell
 pip install --upgrade pip setuptools
 ```
 On Ubuntu, upgrading to pip 10 may break pip. If this happens you need to:
-```shell
+```Shell
 sudo nano /usr/bin/pip
 # change "from pip import main" to "from pip._internal import main"
 ```
 
 ## Get the pep8 python style checker
-```shell
+```Shell
 # On Linux you may need to use sudo.
 pip install pep8
 ```
 
 ## Anaconda
 For data science and machine learning. [Anaconda](https://docs.anaconda.com/anaconda/) is a distribution of the Python and R programming languages for scientific computing. See [Getting Started](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html).
-```shell
+```Shell
 brew install --cask anaconda
 ```
 
 [Installing in silent mode](https://docs.anaconda.com/anaconda/install/silent-mode/)  
 
 Add anaconda to your ```PATH``` on your ```.zshrc``` and ```source ~/.zshrc``` to apply the changes.
-```shell
+```Shell
 export PATH="$(brew --prefix)/anaconda3/bin:$PATH"
 ```
 To use zsh:
-```shell
+```Shell
 conda init zsh
 ```
 If ```conda init zsh``` messed up the ```PATH``` in your ```~/.zshrc``` by adding the ```condabin``` directory instead of ```bin``` you can fix it with a symlink:
-```shell
+```Shell
 ln -sf $(brew --prefix)/anaconda3/bin/jupyter-lab $(brew --prefix)/anaconda3/condabin/jupyter-lab
 ln -sf $(brew --prefix)/anaconda3/bin/jupyter $(brew --prefix)/anaconda3/condabin/jupyter
 ```
 
 If you don't want to activate the ```base``` environment every time you open your terminal:
-```shell
+```Shell
 conda config --set auto_activate_base false
 ```
 
 When creating a conda environment you can use optionally use a configuration file. You can also of course, save a config file from an existing environment to back it up.
-```shell
+```Shell
 conda env create -f myenv.yml
 conda activate myenv
 
@@ -1621,14 +1622,14 @@ conda env remove --name ldm
 
 ### Notebooks
 Fresh installs of Anaconda no longer include notebook extensions in their Jupyter installer. This means that the nb_conda libraries need to be added into your environment separately to access conda environments from your Jupyter notebook. Just run these to add them and you should be able to select your environment as a kernel within a Jupyter notebook.
-```shell
+```Shell
 conda activate <myenv>
 conda install ipykernel
 conda install nb_conda_kernels # or defaults::nb_conda_kernels
 ```
 
 Now you can launch the new JupyterLab or the classic Jupyter Notebook.
-```shell
+```Shell
 jupyter-lab # or the classic "jupyter notebook"
 ```
 
@@ -1643,19 +1644,19 @@ jupyter-lab # or the classic "jupyter notebook"
 2. Insert the SD card in your Raspberry Pi and turn it on. 
 
 If you didn't do so during setup, you can still generate and add an ssh key at any time. Example:
-```shell
+```Shell
 # on your laptop
 ssh-keygen
 ssh-copy-id -i ~/.ssh/id_rsa pi@raspberrypi4.local
 ```
 To remove password authentication:
-```shell
+```Shell
 # on the Pi
 sudo nano /etc/ssh/sshd_config
 ```
 and replace `#PasswordAuthentication yes` with `PasswordAuthentication no`.
 Test the validity of the config file and restart the service (or reboot).
-```shell
+```Shell
 sudo sshd -t
 sudo service sshd restart
 sudo service sshd status
@@ -1664,18 +1665,18 @@ sudo service sshd status
 ## Configuration
 
 Find the IP of your Raspberry Pi using its hostname or find all devices on your network with `arp -a`.
-```shell
+```Shell
 arp raspberrypi4.local 
 ```
 SSH into it with the ```pi``` user and the IP address or hostname. Examples:
-```shell
+```Shell
 ssh pi@192.168.xxx.xxx
 ssh pi@raspberrypi4.local
 # You'll be asked for the password if applicable
 ```
 
 Configure it.
-```shell
+```Shell
 pi@raspberrypi4:~ $ sudo raspi-config
 # Go to Interface Options, VNC (for graphical remote access)
 # Tab to the Finish option and reboot.
@@ -1683,65 +1684,96 @@ pi@raspberrypi4:~ $ sudo raspi-config
 Update it.  
 ```upgrade``` is used to install available upgrades of all packages currently installed on the system. New packages will be installed if required to satisfy dependencies, but existing packages will never be removed. If an upgrade for a package requires the removal of an installed package the upgrade for this package isn't performed.  
 ```full-upgrade``` performs the function of upgrade but will remove currently installed packages if this is needed to upgrade the system as a whole.
-```shell
+```Shell
 pi@raspberrypi4:~ $ sudo apt update # updates the package list
 pi@raspberrypi4:~ $ sudo apt full-upgrade
 ```
+### Give it a static IP
+Find the IP adddress of your router. It's the address that appears after `default via`.
+```Shell
+pi@raspberrypi4:~ $ ip r
+default via [IP]
+```
+Get the IP of your DNS server (it may or may not be your router)
+```Shell
+pi@raspberrypi4:~ $ grep nameserver /etc/resolv.conf
+```
+
+Open this file:
+```Shell
+nano /etc/dhcpcd.conf
+```
+and add/edit these lines at the end filling in the correct info.
+```
+interface [wlan0 for Wi-Fi or eth0 for Ethernet]
+static_routers=[ROUTER IP]
+static domain_name_servers=[DNS IP]
+[static or inform] ip_address=[STATIC IP ADDRESS YOU WANT]/24
+```
+`inform` means that the Raspberry Pi will attempt to get the IP address you requested, but if it's not available, it will choose another. If you use `static`, it will have no IP v4 address at all if the requested one is in use.  
+
+Save the file and `sudo reboot`. From now on, upon each boot, the Pi will attempt to obtain the static ip address you requested.  
+
+You could also set your router to manually assign the static IP to the Raspberry Pi under its DHCP settings e.g. LAN, DHCP server.
+
+## Set it up as a DNS server
+1. Install and configure a DNS Server e.g. DNSmasq or Pi-Hole on the Raspberry Pi.
+2. Change your router’s DNS settings to point to the Raspberry Pi. Log in to your router's admin interface and look for DNS e.g. in LAN, DHCP Server. Set the primary DNS server to the IP of your Raspberry Pi and make sure it's the only DNS server. The Raspberry Pi will handle upstream DNS services.
 
 ## Remote GUI access
 
 Now you'll need a VNC viewer on your laptop to connect to the Raspberry Pi using the graphical interface.
-```shell
+```Shell
 brew install --cask vnc-viewer
 ```
 
 Apparently, on Raspberry Pi pip does not download from the python package index (PyPi), it downloads from PiWheels. PiWheels wheels do not come with pygame's dependencies that are bundled in normal releases.
 
 Install Pygame [dependencies](https://www.piwheels.org/project/pygame/) and Pygame.
-```shell
+```Shell
 pi@raspberrypi4:~ $ sudo apt install libvorbisenc2 libwayland-server0 libxi6 libfluidsynth2 libgbm1 libxkbcommon0 libopus0 libwayland-cursor0 libsndfile1 libwayland-client0 libportmidi0 libvorbis0a libopusfile0 libmpg123-0 libflac8 libxcursor1 libxinerama1 libasyncns0 libxrandr2 libdrm2 libpulse0 libxfixes3 libvorbisfile3 libmodplug1 libxrender1 libsdl2-2.0-0 libxxf86vm1 libwayland-egl1 libsdl2-ttf-2.0-0 libsdl2-image-2.0-0 libjack0 libsdl2-mixer-2.0-0 libinstpatch-1.0-2 libxss1 libogg0
 pi@raspberrypi4:~ $ sudo pip3 install pygame
 ```
 
 Check that the installation worked by running one of its demos
-```shell
+```Shell
 pi@raspberrypi4:~ $ python3 -m pygame.examples.aliens
 ```
 
 ## Copy files
 
 Copy files between Pi and local machine. On local machine run:
-```shell
+```Shell
 scp -r pi@raspberrypi2.local:/home/pi/Documents/ ~/Documents/pidocs
 ```
 
 ## Find info about your Pi
 
 32 or 64-bit kernel?
-```shell
+```Shell
 getconf LONG_BIT
 # or check machine's hardware name: armv7l is 32-bit and aarch64 is 64-bit
 pi@raspberrypi4:~ $ uname -m
 ```
 
 See OS version
-```shell
+```Shell
 cat /etc/os-release
 ```
 
 Architecture    
 If the following returns a ```Tag_ABI_VFP_args``` tag of ```VFP registers```, it's an ```armhf``` (```arm```) system.  
 A blank output means ```armel``` (```arm/v6```).
-```shell
+```Shell
 pi@raspberrypi2:~ $ readelf -A /proc/self/exe | grep Tag_ABI_VFP_args
 ```
 Or check the architecture with:
-```shell
+```Shell
 hostnamectl
 ```
 
 You can find info about the hardware like ports, pins, RAM, SoC, connectivity, etc. with:
-```shell
+```Shell
 pi@raspberrypi4:~ $ pinout
 ```
 
@@ -1759,19 +1791,19 @@ I've added some sample code from the [MagPi Essentials book](https://magpi.raspb
 ## AWS CLI
 
 ### Install the AWS command line interface
-```shell
+```Shell
 curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
 sudo installer -pkg AWSCLIV2.pkg -target /
 ```
 
 ### Check if the AWS CLI is installed correctly
-```shell
+```Shell
 # you may need to reload your shell's rc file first.
 aws --version
 ```
 
 ### Configure the AWS CLI
-```shell
+```Shell
 aws configure
 ```
 
@@ -1780,7 +1812,7 @@ https://developer.amazon.com/docs/smapi/set-up-credentials-for-an-amazon-web-ser
 https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html
 
 ## AWS Amplify
-```shell
+```Shell
 npm install -g @aws-amplify/cli
 amplify configure
 ```
@@ -1792,19 +1824,19 @@ Use your OS package manager or download .dmg installer for macOS. Take note of t
 
 **Configure your PATH**
 Add the mysql location to your PATH. Typically as part of your ~/.bash_profile
-```shell
+```Shell
 export PATH=/usr/local/mysql/bin:$PATH
 ```
 
 **Start the MySQL service**
 On macOS
-```shell
+```Shell
 sudo launchctl load -F /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
 ```
 
 **Verify it's running**
 On macOS
-```shell
+```Shell
 sudo launchctl list | grep mysql
 ```
 
@@ -1813,7 +1845,7 @@ Use MySQL Workbench or other client tool.
 
 **To stop MySQL**
 On macOS
-```shell
+```Shell
 sudo launchctl unload -F /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
 ```
 
@@ -1826,7 +1858,7 @@ show variables like 'secure_file_priv';
 ```
 
 Open the configuration file.
-```shell
+```Shell
 cd /Library/LaunchDaemons
 sudo nano com.oracle.oss.mysql.mysqld.plist
 ```
@@ -1847,7 +1879,7 @@ FROM `your_db`.`your_table`
 ```
 
 You can find your exported data:
-```shell
+```Shell
 sudo find /usr/local/mysql/data -name your_file.csv
 ```
 
@@ -1858,12 +1890,12 @@ sudo find /usr/local/mysql/data -name your_file.csv
 macOS  
 Download the Node.js installer from https://nodejs.org/en/download/  
 or
-```shell
+```Shell
 brew install node
 ```
 
 Linux  
-```shell
+```Shell
 sudo apt install nodejs
 sudo apt install npm
 ```
@@ -1872,7 +1904,7 @@ sudo apt install npm
 
 Windows Subsystem for Linux  
 On WSL the recommended approach for installing a current version of Node.js is nvm.
-```shell
+```Shell
 touch ~/.bashrc
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 # Reload your configuration
@@ -1884,17 +1916,17 @@ npm install npm@latest -g
 
 **Update npm**
 If you installed npm as part of node you may need to update npm.
-```shell
+```Shell
 sudo npm install -g npm
 ```
 
 **Initialize a node project by creating a package.json**
-```shell
+```Shell
 npm init
 ```
 
 **Installing dependencies examples**
-```shell
+```Shell
 sudo npm install --save ask-sdk moment
 sudo npm install --save-dev mocha chai eslint virtual-alexa
 ```
@@ -1902,7 +1934,7 @@ sudo npm install --save-dev mocha chai eslint virtual-alexa
 If you get an error running mocha tests e.g. ```node_modules/.bin/mocha``` not having execute permissions or *mocha Error: Cannot find module './options'* delete your node_modules folder and ```npm install```.
 
 **Set up ESLint with a configuration file**
-```shell
+```Shell
 eslint --init
 # you may need to run it as:
 # sudo ./node_modules/.bin/eslint --init
